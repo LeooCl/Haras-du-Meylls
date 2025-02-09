@@ -1,85 +1,67 @@
 <template>
   <div id="app">
-    <!-- En-tête ou barre de navigation persistante -->
     <header class="navbar">
-      <NuxtLink to="/" class="logo">HarasCraft</NuxtLink>
-      <nav>
-        <NuxtLink to="/" class="nav-link">Accueil</NuxtLink>
-        <NuxtLink to="/about" class="nav-link">À propos</NuxtLink>
-        <NuxtLink to="/server" class="nav-link">Serveur</NuxtLink>
-        <NuxtLink to="/contact" class="nav-link">Contact</NuxtLink>
-      </nav>
+      <Navbar />
     </header>
-
-    <!-- Contenu principal -->
     <main>
       <NuxtPage />
     </main>
-
-    <!-- Pied de page -->
-    <footer class="footer">
-      <p>© 2024 HarasCraft. Tous droits réservés.</p>
-    </footer>
+    <Footer />
   </div>
 </template>
 
 <script setup></script>
 
 <style>
-/* Styles globaux */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
 body {
-  margin: 0;
-  font-family: "Arial", sans-serif;
-  background-color: #f5f5f5;
-  color: #2d3436;
+	line-height: 1,5;
+ 	padding-top: 110px;
+	font-family: "Source Code Pro", serif;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
 }
 
-#app {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'Playfair Display', serif;
 }
 
-/* Barre de navigation */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  background-color: #e17055;
-  color: #fff;
-}
-
-.logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-decoration: none;
-  color: #fff;
-}
-
-.nav-link {
-  margin: 0 10px;
-  text-decoration: none;
-  color: #fff;
-  font-weight: bold;
-  transition: opacity 0.3s ease;
-}
-
-.nav-link:hover {
-  opacity: 0.8;
-}
-
-/* Contenu principal */
-main {
-  flex: 1;
-  padding: 20px;
-}
-
-/* Pied de page */
-.footer {
-  text-align: center;
-  padding: 10px 0;
-  background-color: #2d3436;
-  color: #fff;
-}
 </style>

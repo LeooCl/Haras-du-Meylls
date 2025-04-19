@@ -1,115 +1,281 @@
 <template>
-  <div class="construction-container">
-    <svg
-      class="construction-icon"
-      version="1.0"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 1280.000000 1134.000000"
-      preserveAspectRatio="xMidYMid meet"
-    >
-      <metadata>
-        Created by potrace 1.15, written by Peter Selinger 2001-2017
-      </metadata>
-      <g
-        transform="translate(0.000000,1134.000000) scale(0.100000,-0.100000)"
-        fill="#000000"
-        stroke="none"
-      >
-        <path
-          d="M6285 11325 c-159 -35 -306 -124 -455 -276 l-95 -97 -1110 -1903
-c-610 -1047 -1373 -2356 -1695 -2909 -322 -553 -1114 -1911 -1759 -3018
-l-1174 -2013 6 -177 c8 -253 32 -369 108 -528 83 -174 206 -278 430 -365 l102
--40 4141 11 c2278 7 4875 15 5771 18 l1630 7 111 56 c150 76 225 128 314 218
-164 166 206 323 180 666 l-12 160 -715 1245 c-394 685 -1260 2192 -1926 3350
--665 1158 -1615 2809 -2109 3670 -495 861 -914 1580 -931 1599 -54 57 -193
-165 -275 213 -190 112 -370 150 -537 113z m837 -2722 c638 -1094 1290 -2212
-3680 -6306 369 -632 669 -1149 667 -1151 -5 -3 -10093 16 -10097 19 -4 3 5022
-8665 5028 8665 3 0 328 -552 722 -1227z"
+  <div class="shop-page">
+    <div class="shop-header">
+      <h1>.༻ Boutique du Haras du Meylls ༺.</h1>
+      <div class="paragraph-container">
+        <p>
+          Tout ce que vous trouverez ici est entièrement optionnel : rien n’est
+          nécessaire pour profiter pleinement de votre aventure sur notre
+          serveur. Les articles en vente offrent simplement des avantages en
+          jeu, accessibles en remerciement de votre soutien financier. L’argent
+          récolté est intégralement utilisé pour couvrir les frais liés au bon
+          fonctionnement du serveur.
+        </p>
+        <p class="paragraph-espace">
+          En achetant ici, vous contribuez activement à la vie du Haras du
+          Meylls, et pour cela, nous vous en sommes infiniment reconnaissants.
+        </p>
+        <p class="paragraph-espace">
+          Attention : Tout paiement est définitif : aucune annulation, échange
+          ou remboursement ne pourra être effectué, quel que soit l’article
+          concerné. Si vous quittez le serveur, aucun remboursement ne sera
+          possible.
+        </p>
+        <p class="paragraph-espace">
+          En effectuant un achat, vous confirmez être majeur(e) ou, si vous êtes
+          mineur(e), avoir l’autorisation d’un parent ou d’un responsable légal.
+          En achetant sur cette boutique, vous acceptez les conditions générales
+          de vente, attestez de votre majorité ou certifiez disposer d’une
+          autorisation parentale.
+        </p>
+        <p class="paragraph-espace">
+          Merci de faire partie de cette belle aventure avec nous !
+        </p>
+      </div>
+    </div>
+
+    <!-- Catégorie : Monnaie -->
+    <div class="shop-category">
+      <h2>.༻ Monnaie ༺.</h2>
+      <div class="product-grid">
+        <ShopCard
+          v-for="item in shopItems.filter((i) =>
+            ['500 Oryn', '2000 Oryn', '5000 Oryn'].includes(i.name)
+          )"
+          :key="item.name"
+          :item="item"
+          @add-to-cart="addToCart"
         />
-        <path
-          d="M5470 7159 c-93 -15 -211 -80 -293 -162 -106 -106 -166 -237 -167
--364 0 -66 27 -180 67 -282 33 -84 42 -97 87 -131 186 -138 385 -186 540 -131
-32 11 65 26 72 31 14 13 16 10 44 -59 l20 -53 -27 -21 c-103 -79 -216 -207
--287 -325 l-38 -64 6 -91 c22 -281 78 -620 133 -801 30 -100 36 -78 -55 -213
--66 -96 -161 -291 -195 -398 -39 -123 -66 -261 -73 -382 l-7 -110 -231 -143
-c-127 -79 -241 -150 -253 -157 -21 -14 -21 -13 -21 33 1 45 -1 49 -63 105 -76
-70 -121 94 -231 122 l-83 22 -6 47 c-4 25 -19 66 -33 90 -40 69 -157 198 -191
-213 -52 21 -110 27 -154 15 -39 -10 -46 -8 -118 27 -73 36 -81 38 -172 37 -61
-0 -116 -6 -151 -17 l-55 -17 -671 -1222 c-370 -673 -671 -1224 -669 -1226 1
--1 701 1 1555 5 l1553 6 -7 111 c-30 497 -175 1001 -396 1375 -17 30 -30 54
--28 56 2 1 100 59 218 128 l215 126 185 -8 c102 -4 188 -6 192 -4 4 2 30 74
-59 161 l52 158 240 127 c132 70 241 126 243 124 1 -1 -30 -79 -71 -172 l-73
--170 -11 -410 c-7 -225 -16 -558 -21 -740 -6 -181 -10 -387 -10 -457 l0 -127
--57 -11 c-173 -34 -329 -95 -402 -156 -31 -26 -52 -58 -65 -102 l-7 -22 532 2
-533 3 162 735 c89 404 160 738 158 742 -3 5 -20 8 -38 8 -18 0 -35 2 -37 4 -3
-3 -1 53 4 112 l8 107 70 76 c126 138 256 337 422 644 l74 138 6 -123 c12 -239
-69 -426 227 -737 l79 -156 168 -174 c261 -271 497 -484 863 -781 190 -153 185
--143 125 -265 -35 -73 -75 -123 -209 -269 -43 -48 -77 -88 -75 -89 2 -2 96 -1
-209 2 l205 6 92 70 93 70 210 367 c115 202 210 372 210 376 0 4 -53 21 -119
-37 l-118 30 -442 500 c-243 275 -445 501 -450 503 -5 2 -16 -15 -25 -38 -9
--22 -20 -40 -25 -40 -18 0 -120 121 -145 172 -54 112 -86 289 -92 510 -6 253
--50 421 -185 698 l-80 165 48 42 c26 23 51 42 56 43 4 0 12 -11 17 -25 18 -46
-49 -50 122 -17 105 47 172 116 214 220 l22 56 -23 47 c-29 56 -87 107 -132
-115 -18 3 -33 8 -33 11 0 3 -13 84 -30 181 -82 486 -244 872 -429 1019 -31 24
--130 81 -221 125 l-165 81 -140 -17 c-546 -67 -798 -152 -1046 -353 -65 -52
--109 -67 -125 -42 -4 6 -7 77 -8 158 -1 124 -5 155 -24 210 -28 77 -80 161
--136 219 -104 108 -314 176 -466 151z m2075 -933 c158 -74 269 -318 400 -873
-l27 -113 -54 -49 c-29 -27 -54 -48 -54 -48 -7 8 -638 1005 -641 1014 -5 14 81
-60 147 79 69 19 120 16 175 -10z m-1382 -1107 c62 -32 230 -206 340 -354 53
--71 97 -134 97 -141 0 -6 -27 -76 -59 -155 l-59 -144 -363 -228 c-200 -125
--372 -232 -382 -238 -17 -9 -18 -7 -11 27 21 115 110 260 258 426 53 59 101
-119 106 134 34 89 53 486 31 642 -4 28 -6 52 -4 52 2 0 23 -10 46 -21z"
+      </div>
+    </div>
+
+    <!-- Catégorie : Formule Avantage -->
+    <div class="shop-category">
+      <h2>.༻ Formule Avantage ༺.</h2>
+      <div class="product-grid">
+        <ShopCard
+          v-for="item in shopItems.filter((i) =>
+            [
+              '25 homes',
+              'Téléportation',
+              'Mariage',
+              'Mini Bloc',
+              'Double Salaire',
+            ].includes(i.name)
+          )"
+          :key="item.name"
+          :item="item"
+          @add-to-cart="addToCart"
         />
-      </g>
-    </svg>
-    <h1>Page en construction</h1>
-    <p>
-      Cette page est actuellement en cours de développement. Revenez plus tard !
-    </p>
-    <NuxtLink to="/" class="home-button">Retour à l'accueil</NuxtLink>
+      </div>
+    </div>
+
+    <!-- Catégorie : Services Premium -->
+    <div class="shop-category">
+      <h2>.༻ Services Premium ༺.</h2>
+      <div class="product-grid">
+        <ShopCard
+          v-for="item in shopItems.filter((i) =>
+            [
+              'Achat de Cheval',
+              'Pack Job',
+              'Île Privée',
+              'Kit Coach',
+              'Kit Cavalier',
+            ].includes(i.name)
+          )"
+          :key="item.name"
+          :item="item"
+          @add-to-cart="addToCart"
+        />
+      </div>
+    </div>
+
+    <!-- Catégorie : Dons -->
+    <div class="shop-category">
+      <h2>.༻ Dons ༺.</h2>
+      <div class="product-grid">
+        <ShopCard
+          v-for="item in shopItems.filter((i) =>
+            ['Donation', 'Carte Cadeau'].includes(i.name)
+          )"
+          :key="item.name"
+          :item="item"
+          @add-to-cart="addToCart"
+        />
+      </div>
+    </div>
+
+    <!-- Panier flottant -->
+    <div class="cart-floating">
+      <span>Panier</span>
+      <span class="cart-count">{{ cart.length }}</span>
+    </div>
   </div>
 </template>
 
+<script setup>
+import { ref, computed } from "vue";
+import ShopCard from "~/components/ShopCard.vue";
+
+const cart = ref([]);
+
+const shopItems = [
+  {
+    name: "Kit Coach",
+    price: 15,
+    image: "/shopPicture/coach_kit.webp",
+    category: "Packs",
+  },
+  {
+    name: "Donation",
+    price: "~",
+    image: "/shopPicture/donation.webp",
+    category: "Services",
+  },
+  {
+    name: "Double Salaire",
+    price: 5,
+    image: "/shopPicture/double_salaire.webp",
+    category: "Services",
+  },
+  {
+    name: "Carte Cadeau",
+    price: 10,
+    image: "/shopPicture/gift_card.webp",
+    category: "Packs",
+  },
+  {
+    name: "25 homes",
+    price: 10,
+    image: "/shopPicture/home.webp",
+    category: "Montures",
+  },
+  {
+    name: "Achat de Cheval",
+    price: 5,
+    image: "/shopPicture/horse_purchase.webp",
+    category: "Montures",
+  },
+  {
+    name: "Pack Job",
+    price: 2,
+    image: "/shopPicture/job_purchase.webp",
+    category: "Packs",
+  },
+  {
+    name: "Mariage",
+    price: 10,
+    image: "/shopPicture/marriage.webp",
+    category: "Services",
+  },
+  {
+    name: "Mini Bloc",
+    price: 7,
+    image: "/shopPicture/mini_bloc.webp",
+    category: "Divers",
+  },
+  {
+    name: "500 Oryn",
+    price: 5,
+    image: "/shopPicture/money1.webp",
+    category: "Divers",
+  },
+  {
+    name: "2000 Oryn",
+    price: 15,
+    image: "/shopPicture/money2.webp",
+    category: "Divers",
+  },
+  {
+    name: "5000 Oryn",
+    price: 30,
+    image: "/shopPicture/money3.webp",
+    category: "Divers",
+  },
+  {
+    name: "Île Privée",
+    price: 30,
+    image: "/shopPicture/private_island.webp",
+    category: "Montures",
+  },
+  {
+    name: "Kit Cavalier",
+    price: 7,
+    image: "/shopPicture/rider_kit.webp",
+    category: "Packs",
+  },
+  {
+    name: "Téléportation",
+    price: 5,
+    image: "/shopPicture/teleportation.webp",
+    category: "Services",
+  },
+];
+
+const addToCart = (item) => {
+  cart.value.push(item);
+};
+</script>
+
 <style scoped>
-.construction-container {
+h1,h2 {
+  font-size: 70px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  height: 100vh;
   justify-content: center;
-  background-color: #f4f4f4;
+  padding: 20px 0;
+  font-family: "Mea Culpa", cursive;
+}
+.shop-category h2 {
+  font-size: 50px;
+  background-color: #e8e9d9;
 }
 
-.construction-icon {
-  width: 150px;
-  margin-bottom: 20px;
+.paragraph-container {
+  margin: 0 300px;
 }
-
-h1 {
-  font-size: 32px;
-  font-weight: bold;
-  color: #333;
+.paragraph-espace {
+  padding-top: 15px;
 }
-
-p {
-  font-size: 18px;
-  color: #666;
-  margin-bottom: 20px;
+.shop-header {
+  text-align: center;
+  margin-bottom: 3rem;
 }
-
-.home-button {
-  display: inline-block;
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #4caf50;
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 2rem;
+  margin: 2em 0;
+  justify-content: center;
+  text-align: center;
+}
+.cart-floating {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  background-color: white;
+  border: 2px solid #fed9b7;
+  border-radius: 9999px;
+  padding: 0.6rem 1rem;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: box-shadow 0.3s;
+}
+.cart-floating:hover {
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+.cart-count {
+  background-color: #f07167;
   color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background 0.3s;
-}
-
-.home-button:hover {
-  background-color: #388e3c;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  font-size: 0.85rem;
 }
 </style>

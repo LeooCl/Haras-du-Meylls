@@ -6,11 +6,30 @@
     <main>
       <NuxtPage />
     </main>
-    <Footer />
+    <FooterToggle />
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+const route = useRoute()
+
+// Applique la classe body selon la page
+const updateBodyClass = () => {
+  if (route.path === '/') {
+    document.body.classList.add('no-padding')
+  } else {
+    document.body.classList.remove('no-padding')
+  }
+}
+
+// S'assurer que ça s'exécute après le montage
+onMounted(() => {
+  updateBodyClass()
+})
+
+// Si tu veux que ça s'adapte au changement de page :
+watch(() => route.path, updateBodyClass)
+</script>
 
 <style>
 
@@ -42,7 +61,14 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1,5;
  	padding-top: 110px;
-	font-family: "Source Code Pro", serif;
+  font-family: "Delius Swash Caps", cursive;
+	background-color: #F4F1ED;
+  font-size: 1.2rem;
+  max-width: 1920px;
+  margin: auto;
+}
+body.no-padding {
+  padding-top: 0 !important;
 }
 ol, ul {
 	list-style: none;
@@ -59,9 +85,4 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
-h1,h2,h3,h4,h5,h6 {
-  font-family: 'Playfair Display', serif;
-}
-
 </style>
